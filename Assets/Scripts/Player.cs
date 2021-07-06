@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer playerSR;
     [SerializeField] float _speed = 5f;
     [SerializeField] float _jumpForce = 200f;
+    private Vector2 _startPosition;
 
     //you can avoid an if entirely with
     //bool walking = horizontal != 0; - horizontal != 0 would be true, so anything other than that would be false
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
+        _startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -34,5 +35,9 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump")) {
             playerRB.AddForce(Vector2.up * _jumpForce);
         }
+    }
+
+    internal void ResetToStart() {
+        transform.position = _startPosition;
     }
 }
