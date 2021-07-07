@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3843090683794962650}
   - component: {fileID: 3843090683794962653}
   - component: {fileID: 3843090683794962651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: snowPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

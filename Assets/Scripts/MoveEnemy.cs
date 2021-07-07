@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fly : MonoBehaviour
+public class MoveEnemy : Enemies
 {
     Vector2 _startPosition;
     [SerializeField] Vector2 _direction = Vector2.up;
