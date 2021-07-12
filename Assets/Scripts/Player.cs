@@ -5,13 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //Serializable Components
+    [Header("Cache Components")]
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] Animator playerAnim;
     [SerializeField] SpriteRenderer playerSR;
     [SerializeField] Transform playerFeet;
 
     //Serializable private fields
+    [Header("Movement")]
     [SerializeField] float _speed = 5f;
+    [SerializeField] float _slipFactor = 1f;
+    [Header("Jump")]
     [SerializeField] float _jumpVelocity = 10f;
     [SerializeField] int _maxJumps = 2;
     [SerializeField] float _downPull = 0.1f;
@@ -21,6 +25,7 @@ public class Player : MonoBehaviour
     Vector2 _startPosition;
     int _jumpsRemaining;
     bool isGrounded = true;
+    bool _isOnSlipperySurface;
     float _fallTimer;
     float _jumpTimer;
     float _horizontal;
@@ -40,8 +45,15 @@ public class Player : MonoBehaviour
 
         CalculateIsGrounded();
 
-        UpdateHorizontalMovement();
+        // Get the Input Movement from the player
+        _horizontal = Input.GetAxis("Horizontal") * _speed;
 
+        if (_isOnSlipperySurface) {
+            SlipHorizontalMovement();
+        } else {
+            UpdateHorizontalMovement();
+        }
+        
         UpdatAnimator();
 
         PerformJumpingCalculations();
@@ -87,14 +99,19 @@ public class Player : MonoBehaviour
     }
 
     void UpdateHorizontalMovement() {
-        // Get the Input Movement from the player
-        _horizontal = Input.GetAxis("Horizontal") * _speed;
-
+        
         //Move Player based on movement
-        if (Mathf.Abs(_horizontal) >= 1) {
-            playerRB.velocity = new Vector2(_horizontal, playerRB.velocity.y);
-            Debug.Log($"velocity = {playerRB.velocity}");
-        }
+        playerRB.velocity = new Vector2(_horizontal, playerRB.velocity.y);
+        //Debug.Log($"velocity = {playerRB.velocity}");
+    }
+
+    void SlipHorizontalMovement() {
+
+        var desiredVelocity = new Vector2(_horizontal, playerRB.velocity.y);
+        var smoothVelocity = Vector2.Lerp(playerRB.velocity, desiredVelocity, Time.deltaTime / _slipFactor);
+        //Move Player based on movement
+        playerRB.velocity = smoothVelocity;
+        //Debug.Log($"velocity = {playerRB.velocity}");
     }
 
     void UpdatAnimator() {
@@ -107,6 +124,15 @@ public class Player : MonoBehaviour
         //Check if feet are on the Ground with OverlapCircle Raycast
         var hit = Physics2D.OverlapCircle(playerFeet.position, 0.1f, LayerMask.GetMask("Ground"));
         isGrounded = hit != null;
+
+        //shorthand
+        //_isOnSlipperySurface = hit?.CompareTag("Slippery") ?? false;
+
+        if(hit != null) {
+            _isOnSlipperySurface = hit.CompareTag("Slippery");
+        } else {
+            _isOnSlipperySurface = false;
+        }
     }
 
     internal void ResetToStart() {

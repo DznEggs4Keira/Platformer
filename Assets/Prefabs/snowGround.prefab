@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2142963906886308187}
   m_Layer: 3
   m_Name: snowGround
-  m_TagString: Untagged
+  m_TagString: Slippery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2142963906886308186}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 10d064c0977590c4080f28d8b4440925, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

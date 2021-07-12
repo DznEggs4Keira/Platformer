@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4543833784050538253}
   - component: {fileID: 4543833784050538252}
   - component: {fileID: 4543833784050538255}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BouncyMushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

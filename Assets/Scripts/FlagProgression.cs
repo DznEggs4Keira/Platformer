@@ -8,7 +8,7 @@ public class FlagProgression : MonoBehaviour
 {
     [SerializeField] Animator flagAnim;
     [SerializeField] string _sceneName;
-    [SerializeField] float _delay = 1f;
+    [SerializeField] float _delay = 2f;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
