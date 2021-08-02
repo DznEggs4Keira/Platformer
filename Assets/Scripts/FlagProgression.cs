@@ -10,7 +10,7 @@ public class FlagProgression : MonoBehaviour
     [SerializeField] string _sceneName;
     [SerializeField] float _delay = 2f;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
             
             //play flag wave
