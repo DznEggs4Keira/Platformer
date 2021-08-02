@@ -904,7 +904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324572191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0.49, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1795749439}
@@ -2618,7 +2618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389369219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49, y: -0.15, z: 0}
+  m_LocalPosition: {x: -0.45, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1795749439}
@@ -3027,7 +3027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795749438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8136867, y: 1.0206156, z: 0.9477961}
+  m_LocalPosition: {x: -0.848, y: 1.015, z: 0.9477961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1389369220}
@@ -3123,6 +3123,7 @@ MonoBehaviour:
   _speed: 3
   _leftSensor: {fileID: 1389369220}
   _rightSensor: {fileID: 324572192}
+  _deathSprite: {fileID: 21300000, guid: 7be8e631bc160e943af53aac4b8caaa0, type: 3}
 --- !u!70 &1795749444
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3136,8 +3137,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 0.4}
+  m_Offset: {x: -0.0000000065681807, y: 0.19490217}
+  m_Size: {x: 0.7142859, y: 0.39144948}
   m_Direction: 1
 --- !u!50 &1795749445
 Rigidbody2D:

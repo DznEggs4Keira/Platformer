@@ -14,6 +14,7 @@ public class Enemies : MonoBehaviour
 
     [Header("Enemy Type")]
     public EnemyTypes _enemy;
+    protected bool isDead = false;
 
     #region MOVEMENT
 
@@ -42,34 +43,34 @@ public class Enemies : MonoBehaviour
 
     // Update is called once per frame
     protected virtual void Update() {
-        switch (_enemy) {
-            case EnemyTypes.Fly: {
-                    transform.Translate(_direction.normalized * Time.deltaTime * _speed);
-                    //var distance = (_startPosition - (Vector2)transform.position).sqrMagnitude;
-                    var distance = Vector2.Distance(_startPosition, transform.position);
+        if(!isDead) {
+            switch (_enemy) {
+                case EnemyTypes.Fly: {
+                        transform.Translate(_direction.normalized * Time.deltaTime * _speed);
+                        //var distance = (_startPosition - (Vector2)transform.position).sqrMagnitude;
+                        var distance = Vector2.Distance(_startPosition, transform.position);
 
-                    if (distance >= _maxDistance) {
+                        if (distance >= _maxDistance) {
 
-                        transform.position = _startPosition + (_direction.normalized * _maxDistance);
-                        _direction *= -1;
+                            transform.position = _startPosition + (_direction.normalized * _maxDistance);
+                            _direction *= -1;
+                        }
+                        break;
                     }
-                    break;
-                }
 
-            case EnemyTypes.Slime: {
+                case EnemyTypes.Slime: {
 
-                    _rigidbody.velocity = new Vector2(_slimeDirection, _rigidbody.velocity.y);
+                        _rigidbody.velocity = new Vector2(_slimeDirection, _rigidbody.velocity.y);
 
-                    if (_slimeDirection < 0) {
-                        ScanSensor(_leftSensor);
-                    } else {
-                        ScanSensor(_rightSensor);
+                        if (_slimeDirection < 0) {
+                            ScanSensor(_leftSensor);
+                        } else {
+                            ScanSensor(_rightSensor);
+                        }
+                        break;
                     }
-                    break;
-                }
+            }
         }
-
-
     }
 
     private void ScanSensor(Transform sensor) {
@@ -102,15 +103,6 @@ public class Enemies : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             Debug.Log("Player Died. Game Over!");
             collision.GetComponent<Player>().ResetToStart();
-        }
-    }
-
-    protected virtual void OnCollisionEnter2D(Collision2D collision) {
-        if (!enabled) return;
-
-        if (collision.gameObject.CompareTag("Player")) {
-            Debug.Log("Player Died. Game Over!");
-            collision.transform.GetComponent<Player>().ResetToStart();
         }
     }
 
