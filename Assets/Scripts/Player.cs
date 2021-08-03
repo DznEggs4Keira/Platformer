@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Player 
+    [Header("Player")]
+    [SerializeField] int playerNum = 1;
+
+    public int PlayerNumber { get { return playerNum; } }
+
     //Serializable Components
     [Header("Cache Components")]
     [SerializeField] Rigidbody2D playerRB;
@@ -46,7 +52,7 @@ public class Player : MonoBehaviour
         CalculateIsGrounded();
 
         // Get the Input Movement from the player
-        _horizontal = Input.GetAxis("Horizontal") * _speed;
+        _horizontal = Input.GetAxis($"P{playerNum}Horizontal") * _speed;
 
         if (_isOnSlipperySurface) {
             SlipHorizontalMovement();
@@ -62,7 +68,7 @@ public class Player : MonoBehaviour
     void PerformJumpingCalculations() {
         //JUMP GOING UP
         //Jump and Double Jump
-        if (Input.GetButtonDown("Jump") && _jumpsRemaining > 0) {
+        if (Input.GetButtonDown($"P{playerNum}Jump") && _jumpsRemaining > 0) {
 
             _jumpsRemaining--;
             Debug.Log($"Jumps Remaining: {_jumpsRemaining}");
@@ -72,7 +78,7 @@ public class Player : MonoBehaviour
             _jumpTimer = 0f;
 
         } //Hold Jump
-          else if (Input.GetButton("Jump") && _jumpTimer <= _maxJumpDuration) {
+          else if (Input.GetButton($"P{playerNum}Jump") && _jumpTimer <= _maxJumpDuration) {
 
             playerRB.velocity = new Vector2(playerRB.velocity.x, _jumpVelocity);
             _fallTimer = 0;

@@ -9,6 +9,7 @@ public class PushButtonSwitch : MonoBehaviour
     [SerializeField] UnityEvent _onPressed;
     [SerializeField] UnityEvent _onReleased;
     [SerializeField] float _delay;
+    [SerializeField] int _playerNumber = 1;
     Sprite _upSprite;
 
     void Awake() {
@@ -19,6 +20,8 @@ public class PushButtonSwitch : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
+            if (collision.GetComponent<Player>().PlayerNumber != _playerNumber) return;
+
             BecomePressed();
         }
     }
@@ -32,6 +35,8 @@ public class PushButtonSwitch : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
+            if (collision.GetComponent<Player>().PlayerNumber != _playerNumber) return;
+
             StartCoroutine(BecomeReleased(_delay));
         }
     }

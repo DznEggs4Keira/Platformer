@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PurplePlayer
+  m_Controller: {fileID: 9100000, guid: e391995bd4478e54c8c0a4dd6c5a1d55, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6a2cc35129d167849bcfad425c18fa1f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4ee1e96bb94f3ea489cae0d844b545db, type: 2}
