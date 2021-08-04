@@ -20,6 +20,8 @@ public class Enemies : MonoBehaviour
 
     Vector2 _startPosition;
     Rigidbody2D _rigidbody;
+    SpriteRenderer _spriteRenderer;
+    
 
     [Header("Enemy Movement")]
     [SerializeField] Vector2 _direction = Vector2.up;
@@ -39,6 +41,7 @@ public class Enemies : MonoBehaviour
     protected virtual void Start() {
         _startPosition = transform.position;
         _rigidbody = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class Enemies : MonoBehaviour
 
                             transform.position = _startPosition + (_direction.normalized * _maxDistance);
                             _direction *= -1;
+                            _spriteRenderer.flipX = _direction.x > 0;
                         }
                         break;
                     }
@@ -102,6 +106,7 @@ public class Enemies : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player")) {
             Debug.Log("Player Died. Game Over!");
+            collision.GetComponent<Animator>().SetTrigger("Hit");
             collision.GetComponent<Player>().ResetToStart();
         }
     }

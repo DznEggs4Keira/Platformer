@@ -15,6 +15,7 @@ public class Enemies_Slime : Enemies
             if(collision.contacts[0].normal.y <= -0.5f) {
                 StartCoroutine(Die());
             } else {
+                collision.transform.GetComponent<Animator>().SetTrigger("Hit");
                 collision.transform.GetComponent<Player>().ResetToStart();
             }
         }

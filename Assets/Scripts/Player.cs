@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
+        UpdatAnimator();
+
         CalculateIsGrounded();
 
         // Get the Input Movement from the player
@@ -59,13 +61,12 @@ public class Player : MonoBehaviour
         } else {
             UpdateHorizontalMovement();
         }
-        
-        UpdatAnimator();
 
         PerformJumpingCalculations();
     }
 
     void PerformJumpingCalculations() {
+
         //JUMP GOING UP
         //Jump and Double Jump
         if (Input.GetButtonDown($"P{playerNum}Jump") && _jumpsRemaining > 0) {
@@ -79,10 +80,9 @@ public class Player : MonoBehaviour
 
         } //Hold Jump
           else if (Input.GetButton($"P{playerNum}Jump") && _jumpTimer <= _maxJumpDuration) {
-
-            playerRB.velocity = new Vector2(playerRB.velocity.x, _jumpVelocity);
-            _fallTimer = 0;
-        }
+              playerRB.velocity = new Vector2(playerRB.velocity.x, _jumpVelocity);
+              _fallTimer = 0;
+          }
 
         //we don't wanna increment this in the if because that will just add a few milliseconds in and we will get a third jump on hold
         //we don't care if the jump timer keeps incrementing as long as it is reset when we start the jump
@@ -122,6 +122,8 @@ public class Player : MonoBehaviour
 
     void UpdatAnimator() {
         // Set the animation of player based on movement
+        playerAnim.SetBool("isJumping", !isGrounded);
+
         playerAnim.SetBool("isWalking", _horizontal != 0);
         if (_horizontal != 0) playerSR.flipX = _horizontal < 0;
     }
