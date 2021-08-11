@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class UICoinsCollected : MonoBehaviour
 {
-    Text _text;
+    TMP_Text _text;
     void Start()
     {
-        _text = GetComponent<Text>();        
+        _text = GetComponent<TMP_Text>();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        _text.text = Coin.CoinsCollected.ToString();
+        _text.SetText(Coin.CoinsCollected.ToString());
     }
 }
