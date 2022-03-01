@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class Enemies_Traps : Enemies
 {
-    // Traps
+    private void OnParticleCollision(GameObject other) {
+
+        if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("Player Died. Game Over!");
+            other.GetComponent<Animator>().SetTrigger("Hit");
+            other.GetComponent<Player>().ResetToStart();
+        }
+    }
 }
