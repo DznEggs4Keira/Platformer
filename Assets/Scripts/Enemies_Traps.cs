@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemies_Traps : Enemies
 {
+    protected override void Start() {
+        _enemy = EnemyTypes.Traps;
+    }
+
     protected override void OnParticleCollision(GameObject other) {
 
         base.OnParticleCollision(other);

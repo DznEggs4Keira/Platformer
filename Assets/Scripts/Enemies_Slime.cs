@@ -7,6 +7,11 @@ public class Enemies_Slime : Enemies
     // Slime
     [SerializeField] Sprite _deathSprite;
 
+    protected override void Start() {
+        base.Start();
+        _enemy = EnemyTypes.Slime;
+    }
+
     void OnCollisionEnter2D(Collision2D collision) {
         //if (isDead) return;
 

@@ -24,9 +24,9 @@ public class Enemies : MonoBehaviour
     
 
     [Header("Enemy Movement")]
-    [SerializeField] Vector2 _direction = Vector2.up;
-    [SerializeField] float _maxDistance = 3f;
-    [SerializeField] float _speed = 3f;
+    public Vector2 _direction = Vector2.up;
+    public float _maxDistance = 3f;
+    public float _speed = 3f;
 
 
 
@@ -34,8 +34,8 @@ public class Enemies : MonoBehaviour
     float _slimeDirection = -1f;
 
     [Header("Slime Sensors")]
-    [SerializeField] Transform _leftSensor = null;
-    [SerializeField] Transform _rightSensor = null;
+    public Transform _leftSensor = null;
+    public Transform _rightSensor = null;
 
     // Start is called before the first frame update
     protected virtual void Start() {

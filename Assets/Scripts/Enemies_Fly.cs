@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Enemies_Fly : Enemies
 {
-    // Fly
+    protected override void Start() {
+        base.Start();
+        _enemy = EnemyTypes.Fly;
+    }
 }
