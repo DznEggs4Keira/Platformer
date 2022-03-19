@@ -113,12 +113,6 @@ public class Enemies : MonoBehaviour
 
     protected virtual void OnParticleCollision(GameObject other) {
         if (!enabled) return;
-
-        if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("Player Died. Game Over!");
-            other.GetComponent<Animator>().SetTrigger("Hit");
-            other.GetComponent<Player>().ResetToStart();
-        }
     }
 
     #endregion

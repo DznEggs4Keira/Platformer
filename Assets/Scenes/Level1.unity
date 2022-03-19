@@ -17283,9 +17283,9 @@ GameObject:
   - component: {fileID: 574364198}
   - component: {fileID: 574364199}
   - component: {fileID: 574364203}
-  - component: {fileID: 574364202}
   - component: {fileID: 574364201}
   - component: {fileID: 574364200}
+  - component: {fileID: 574364202}
   m_Layer: 0
   m_Name: liquidLavaTop_mid
   m_TagString: Untagged
@@ -22139,7 +22139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 574364197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbe3db0228834149aa12f8de5518ef1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d6ac77d432414a4789d801eb69c30d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: 2
